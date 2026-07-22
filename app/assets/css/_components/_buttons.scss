@@ -1,0 +1,13 @@
+.o-starBtn {
+  position: relative;
+  text-decoration: none;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 130px;
+    height: 30px;
+    margin: -8px 0 0 -20px;
+    background: url(/images/other/btn-star.svg) no-repeat center/contain;
+  }
+}
