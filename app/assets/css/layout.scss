@@ -1,26 +1,29 @@
-@use "./_mixins/medias"as medias;
-@use "./_mixins/_wrapper"as wrapper;
+@use "./_mixins/medias" as medias;
+@use "./_mixins/_wrapper" as wrapper;
 
 body {
-    overflow-x: hidden;
+  background-color: #000;
+  overflow-x: hidden;
 
-    @include medias.breakpoint-down("sm") {
-        &.is-popupOpen {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+  @include medias.breakpoint-down("sm") {
+    &.is-popupOpen {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
     }
+  }
 }
 /* ==========================================================================
    Header
    ========================================================================== */
 
+.l-header {
+  color: #fff;
+}
+
 /* ==========================================================================
    Main
    ========================================================================== */
-
-
 
 /* ==========================================================================
    Footer
