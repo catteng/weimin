@@ -1,0 +1,96 @@
+@keyframes cycleDisplay {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  2%,
+  10.5% {
+    opacity: 1;
+    visibility: visible;
+  }
+  12.5%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0); /* 一開始隱藏，左側為起點 */
+  }
+  30% {
+    opacity: 1; /* 在前 30% 時間讓透明度漸變到 1 */
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0); /* 接下來的時間只是純粹拉開 clip-path 遮罩 */
+  }
+}
+
+@keyframes loading-text {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading-text {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(0);
+  }
+}

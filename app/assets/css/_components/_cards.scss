@@ -1,0 +1,212 @@
+@use "./../_mixins/_medias" as medias;
+@use "./../_mixins/_wrapper" as wrapper;
+
+.c-kv {
+  @include wrapper.wrapper();
+  z-index: 1;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 860px;
+  }
+
+  &__text {
+    padding-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: bold;
+    animation: fadeUp 1.2s forwards;
+    transition: 0.3s;
+    opacity: 0;
+  }
+
+  &__slogon {
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 10px;
+    font-size: 20px;
+    font-style: italic;
+    animation: fadeUp 1s forwards 0.9s;
+    transition: 0.3s;
+    opacity: 0;
+
+    span {
+      &:nth-of-type(2n) {
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+    margin-top: calc(32px - 40px);
+    animation: fadeUp 1.2s forwards;
+    transition: 0.3s;
+    opacity: 0;
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &__text {
+      padding-bottom: 20px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__slogon {
+      width: 85%;
+      font-size: 16px;
+      font-style: italic;
+    }
+  }
+}
+
+.o-textLoader {
+  $root: &;
+
+  display: flex;
+  align-items: center;
+  height: 28px;
+  position: relative;
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    animation: loading-text 1.2s infinite ease-in-out;
+    animation-delay: 0.15s;
+    margin: 0 8px;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #fff;
+      animation: loading-text 1.2s infinite ease-in-out;
+    }
+
+    &::before {
+      left: -8px;
+      animation-delay: 0s;
+    }
+
+    &::after {
+      left: 8px;
+      animation-delay: 0.3s;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    font-style: italic;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #E3B75E 0%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+  }
+
+  &.is-showText {
+    @at-root & #{$root} {
+      &__loading {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &__text {
+        opacity: 1;
+        visibility: visible;
+        animation: fadeText 1s ease-out forwards;
+      }
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &__text {
+      font-size: 18px;
+    }
+  }
+}
+
+.o-waveText {
+  position: relative;
+  height: 24px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.6s;
+
+  span {
+    display: inline-block;
+    font-style: italic;
+    font-size: 18px;
+    animation: wave 2s ease-in-out infinite;
+    color: rgba($color: #fff, $alpha: 0.8);
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    animation: cycleDisplay 32s infinite;
+
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        animation-delay: ($i - 1) * 4s;
+      }
+    }
+
+    span {
+      &:nth-child(4n) {
+        animation-delay: 0s;
+      }
+
+      &:nth-child(4n-3) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(4n-2) {
+        animation-delay: 0.4s;
+      }
+
+      &:nth-child(4n-1) {
+        animation-delay: 0.6s;
+      }
+    }
+  }
+}

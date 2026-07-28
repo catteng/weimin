@@ -1,3 +1,6 @@
+@use "./../_mixins/_medias" as medias;
+@use "./../_mixins/_wrapper" as wrapper;
+
 .o-starBtn {
   position: relative;
   text-decoration: none;
@@ -9,5 +12,63 @@
     height: 30px;
     margin: -8px 0 0 -20px;
     background: url(/images/other/btn-star.svg) no-repeat center/contain;
+  }
+}
+
+.o-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 8px 28px;
+  width: fit-content;
+  min-width: 120px;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  background: linear-gradient(-270deg, #c39b4b 0%, #fff 20%, #e8c47e 50%, #fff 75%, #edba52 100%);
+  background-size: 400% 100%;
+  border-radius: 20px;
+  transition: 0.6s;
+  z-index: 1;
+
+  &.-secondary {
+    position: relative;
+    background: transparent;
+    color: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(-270deg, #c39b4b 0%, #fff 20%, #e8c47e 50%, #fff 75%, #edba52 100%);
+      background-size: 400% 100%;
+      transition: 0.6s;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      z-index: -1;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+      background-position: 100% 0;
+
+      &.-secondary {
+        color: #e8c47e;
+        &::before {
+          background-position: 100% 0;
+        }
+      }
+    }
   }
 }
