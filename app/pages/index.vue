@@ -26,8 +26,8 @@
             <!-- partner -->
             <div class="c-logo swiper">
                 <div class="c-logo__wrap swiper-wrapper">
-                    <template v-for="loopIndex in 10" :key="`loop-${loopIndex}`">
-                        <template v-for="(item, index) in partner" :key="item.name + index + '-' + loopIndex">
+                    <template v-for="loopIndex in 10" :key="loopIndex">
+                        <template v-for="(item, index) in partner" :key="loopIndex">
                             <div class="c-logo__item swiper-slide">
                                 <a v-if="item.url" class="c-logo__link" :href="item.url" target="_blank">
                                     <img class="c-logo__logo" :class="{ 'no-filter': !item.filter }" :src="item.logo" :alt="item.name">
@@ -138,6 +138,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- comment -->
+        <div class="l-block__item">
+            <div class="c-carousel -comment swiper" data-swiper="comment">
+                <div class="c-carousel__wrap swiper-wrapper">
+                    <div v-for="loopIndex in 20" :key="loopIndex" class="c-carousel__slide swiper-slide">
+                        <div class="o-comment">
+                            <div class="o-comment__name">車行老闆李先生</div>
+                            <div class="o-comment__text">試過自己做社群，結果對做圖排版完全一竅不通，社群直接荒廢。幸好蔚泯小編非常專業，溝通過程也非常舒服。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -244,6 +258,7 @@ let featureTimeout: ReturnType<typeof setTimeout> | null = null;
 onMounted(() => {
     playAnimation();
     logoSwiper();
+    commentSwiper();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     featureObserver = new IntersectionObserver(
@@ -310,6 +325,17 @@ const logoSwiper = () => {
             disableOnInteraction: false,
         },
         allowTouchMove: false,
+    });
+};
+
+const commentSwiper = () => {
+    swiper.value = new Swiper('[data-swiper=comment]', {
+        modules: [Autoplay],
+        slidesPerView: 'auto',
+        spaceBetween: 32,
+        speed: 2000,
+        loop: true,
+        autoplay: true
     });
 };
 </script>

@@ -242,24 +242,29 @@ body {
    ========================================================================== */
 .l-footer {
   $root: &;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  @include wrapper.wrapper();
-  padding-top: 60px;
-  padding-bottom: 120px;
-  background: url(/images/background/footer.png) no-repeat bottom left/900px
-    223px;
   border-top: 1px solid #79643d;
 
+  &__wrap {
+    @include wrapper.wrapper();
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background: url(/images/background/footer.png) no-repeat bottom left/900px
+      223px;
+  }
+
   @include medias.breakpoint-down("md") {
-    flex-wrap: wrap;
-    gap: 40px;
-    padding-bottom: 80px;
-    background: url(/images/background/footer.png) no-repeat bottom left/390px
-      96px;
-    font-size: 14px;
+
+    &__wrap {
+      flex-wrap: wrap;
+      gap: 40px;
+      padding-bottom: 80px;
+      background: url(/images/background/footer.png) no-repeat bottom center/390px
+        96px;
+      font-size: 14px;
+    }
 
     &__left {
       width: 100%;
@@ -388,19 +393,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px 40px;
-
-    &.-more {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px;
-
-      @at-root & #{$root} {
-        &__item {
-          padding: 6px 12px;
-          border: 1px solid rgba($color: #fff, $alpha: 0.15);
-        }
-      }
-    }
   }
 
   &__item {
@@ -422,6 +414,21 @@ body {
 
   @include medias.breakpoint-down("sm") {
     flex-direction: column;
+
+    &__content {
+      &.-more {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+
+        @at-root & #{$root} {
+          &__item {
+            padding: 6px 12px;
+            border: 1px solid rgba($color: #fff, $alpha: 0.15);
+          }
+        }
+      }
+    }
   }
 }
 /* ==========================================================================
