@@ -30,11 +30,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const isMenuOpen = ref(false);
 
 function menuToggle() {
     isMenuOpen.value = !isMenuOpen.value;
 }
+
+watch(isMenuOpen, (newVal) => {
+    if (import.meta.client) {
+        if (newVal) {
+            document.body.classList.add('is-menuOpen');
+        } else {
+            document.body.classList.remove('is-menuOpen');
+        }
+    }
+});
 </script>

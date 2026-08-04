@@ -13,7 +13,7 @@
                     </div>
                     <div class="c-kv__title">蔚然成風，初心不泯。<br>在繁盛之中，守住最純粹的初衷</div>
                     <div class="c-kv__action">
-                        <a href="#" class="o-btn" target="_self">了解更多</a>
+                        <a href="#more" class="o-btn" target="_self">了解更多</a>
                         <a href="#" class="o-btn -secondary" target="_self">聯絡蔚泯</a>
                     </div>
                     <div class="c-kv__slogon">
@@ -79,7 +79,7 @@
         </div>
 
         <!-- service -->
-        <div class="l-block__item -service">
+        <div class="l-block__item -service" id="more">
             <div class="l-service">
                 <video class="l-service__bg" src="/video/service.mp4" autoplay muted loop playsinline></video>
                 <div class="l-service__wrap">
