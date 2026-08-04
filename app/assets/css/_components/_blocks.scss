@@ -2,6 +2,8 @@
 @use "./../_mixins/_wrapper" as wrapper;
 
 .l-block {
+  $root: &;
+
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -10,28 +12,75 @@
   &__item {
     &.-kv {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       position: relative;
       width: 100%;
-      height: calc(100vh - 84px - 60px);
+      height: calc(100vh - 84px);
     }
 
-    &.-a,
-    &.-b {
+    &.-feature {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 500px;
-      background: #000;
-      color: #fff;
-      font-size: 40px;
-      font-family: "Oswald", sans-serif;
+      padding: 160px 0;
+      background:
+        url(/images/background/blur.svg) no-repeat left calc(50% - 250px) top
+          0px / 460px,
+        url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
+          450px / 460px;
+      overflow: hidden;
+
+      @at-root & #{$root} {
+        &__bg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(var(--scroll-scale, 1))
+            rotate(var(--scroll-rotate, 0deg));
+          width: 800px;
+          max-width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          background: url(/images/background/wave-circle.svg) no-repeat
+            center/contain;
+          z-index: 0;
+          pointer-events: none;
+          transition:
+            width 0.6s ease-out,
+            opacity 1s ease;
+          opacity: 0;
+
+          &.is-visible {
+            opacity: 0.3;
+          }
+        }
+
+        &__wrap {
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  @include medias.breakpoint-down("md") {
+    &__bg {
+      display: none;
     }
 
-    &.-b {
-      background: rgba(112, 112, 112, 0.439);
+    &__item {
+      &.-feature {
+        padding: 20px 0 100px 0;
+        background:
+          url(/images/background/blur.svg) no-repeat left calc(50% - 120px)
+            top -80px / 800px,
+          url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
+            450px / 460px,
+          url(/images/background/wave-circle-op3.svg) no-repeat left calc(50% + 100px) top 10px / 1200px;
+      }
     }
   }
 }

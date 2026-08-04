@@ -1,0 +1,131 @@
+@use "./../_mixins/_medias" as medias;
+@use "./../_mixins/_wrapper" as wrapper;
+
+.o-list {
+  $root: &;
+
+  &.-hash {
+    margin: 0;
+    padding-left: 20px;
+    list-style: none;
+
+    @at-root & #{$root} {
+      &__item {
+        position: relative;
+        &::before {
+          content: "#";
+          position: absolute;
+          left: -15px;
+        }
+      }
+    }
+  }
+}
+
+.c-serviceList {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  max-width: 900px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    justify-self: center;
+    width: 2px;
+    height: 100%;
+    background: #79643d;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    padding: 20px 40px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      align-self: center;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 20px;
+    }
+
+    &:nth-of-type(odd) {
+      grid-column: 1;
+    }
+
+    &:nth-of-type(even) {
+      grid-column: 2;
+
+      &::before {
+        right: auto;
+        left: -4px;
+      }
+    }
+
+    @for $i from 1 through 20 {
+      &:nth-of-type(#{$i}) {
+        grid-row: #{$i};
+      }
+    }
+  }
+
+  &__icon {
+    margin-top: 4px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  @include medias.breakpoint-down("md") {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__item {
+      padding: 12px 20px;
+      &:nth-of-type(even),
+      &:nth-of-type(odd) {
+        &::before {
+          right: 0;
+          left: -3px;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 18px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

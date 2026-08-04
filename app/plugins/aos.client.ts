@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   if (import.meta.client) {
     nuxtApp.hook('app:mounted', () => {
       AOS.init({
-        duration: 1000,
+        duration: 1500,
         once: true,
       })
     })

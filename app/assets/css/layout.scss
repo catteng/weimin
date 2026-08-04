@@ -240,6 +240,7 @@ body {
   justify-content: end;
   @include wrapper.wrapper();
   padding-bottom: 200px;
+  overflow: hidden;
 }
 
 .o-social {
