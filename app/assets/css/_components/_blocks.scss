@@ -17,7 +17,7 @@
       align-items: center;
       position: relative;
       width: 100%;
-      height: calc(100vh - 84px);
+      height: 100dvh;
     }
 
     &.-feature {
@@ -72,6 +72,10 @@
     }
 
     &__item {
+      &.-kv {
+        height: calc(100dvh + 100px);
+      }
+      
       &.-feature {
         padding: 20px 0 100px 0;
         background:
@@ -79,7 +83,8 @@
             top -80px / 800px,
           url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
             450px / 460px,
-          url(/images/background/wave-circle-op3.svg) no-repeat left calc(50% + 100px) top 10px / 1200px;
+          url(/images/background/wave-circle-op3.svg) no-repeat left
+            calc(50% + 100px) top 10px / 1200px;
       }
     }
   }

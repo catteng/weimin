@@ -22,8 +22,9 @@ body {
    Header
    ========================================================================== */
 .l-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   padding: 12px 0;
   backdrop-filter: blur(4px);
   z-index: 100;

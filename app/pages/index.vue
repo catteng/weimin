@@ -1,5 +1,6 @@
 <template>
     <div class="l-block">
+        <!-- kv -->
         <div class="l-block__item -kv">
             <Wave />
             <!-- kv -->
@@ -20,6 +21,13 @@
                         <span>── 從視覺的起點到數據的終點，</span>
                         <span>用策略重塑品牌真正的影響力</span>
                     </div>
+                </div>
+                <div class="c-kv__star">
+                    <div class="o-star -sm"></div>
+                    <div class="o-star -lg"></div>
+                    <div class="o-star -sm"></div>
+                    <div class="o-star -md"></div>
+                    <div class="o-star"></div>
                 </div>
             </div>
 
@@ -141,14 +149,21 @@
 
         <!-- comment -->
         <div class="l-block__item">
-            <div class="c-carousel -comment swiper" data-swiper="comment">
-                <div class="c-carousel__wrap swiper-wrapper">
-                    <div v-for="loopIndex in 20" :key="loopIndex" class="c-carousel__slide swiper-slide">
-                        <div class="o-comment">
-                            <div class="o-comment__name">車行老闆李先生</div>
-                            <div class="o-comment__text">試過自己做社群，結果對做圖排版完全一竅不通，社群直接荒廢。幸好蔚泯小編非常專業，溝通過程也非常舒服。</div>
+            <div class="l-comment">
+                <div class="l-comment__content" data-aos="fade-in">
+                    <div class="c-carousel -comment swiper" data-swiper="comment">
+                        <div class="c-carousel__wrap swiper-wrapper">
+                            <div v-for="loopIndex in 40" :key="loopIndex" class="c-carousel__slide swiper-slide">
+                                <div class="o-comment">
+                                    <div class="o-comment__name">車行老闆李先生</div>
+                                    <div class="o-comment__text">試過自己做社群，結果對做圖排版完全一竅不通，社群直接荒廢。幸好蔚泯小編非常專業，溝通過程也非常舒服。</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="l-comment__star">
+                    <div class="o-star -lg"></div>
                 </div>
             </div>
         </div>
@@ -317,7 +332,7 @@ const logoSwiper = () => {
     swiper.value = new Swiper('.c-logo', {
         modules: [Autoplay],
         slidesPerView: 'auto',
-        spaceBetween: 60,
+        spaceBetween: 40,
         speed: 3000,
         loop: true,
         autoplay: {
@@ -333,7 +348,7 @@ const commentSwiper = () => {
         modules: [Autoplay],
         slidesPerView: 'auto',
         spaceBetween: 32,
-        speed: 2000,
+        speed: 2400,
         loop: true,
         autoplay: true
     });

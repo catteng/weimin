@@ -92,3 +92,15 @@
     transform: translateY(0);
   }
 }
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.2;
+    scale: 1;
+  }
+  50% {
+    opacity: 0.9;
+    scale: 1.2;
+  }
+}

@@ -16,7 +16,8 @@
     display: block;
     width: 30px;
     height: 60px;
-    background: url(/images/other/star.svg) no-repeat center/contain;
+    background: url(/images/other/star.png) no-repeat center/contain;
+    animation: breathe 4s ease-in-out infinite;
   }
 
   &.-v {
@@ -95,6 +96,36 @@
     opacity: 0;
   }
 
+  &__star {
+    position: relative;
+    pointer-events: none;
+
+    > :nth-child(1) {
+      top: -340px;
+      left: -800px;
+    }
+
+    > :nth-child(2) {
+      bottom: 180px;
+      left: 200px;
+    }
+
+    > :nth-child(3) {
+      top: 150px;
+      right: 650px;
+    }
+
+    > :nth-child(4) {
+      bottom: 100px;
+      right: 220px;
+    }
+
+    > :nth-child(5) {
+      top: 120px;
+      right: -150px;
+    }
+  }
+
   @include medias.breakpoint-down("sm") {
     &__text {
       padding-bottom: 20px;
@@ -109,6 +140,59 @@
       font-size: 16px;
       font-style: italic;
     }
+
+    &__star {
+      > :nth-child(1),
+      > :nth-child(2) {
+        display: none;
+      }
+
+      > :nth-child(3) {
+        top: -260px;
+        left: calc(50% - 320px);
+      }
+
+      > :nth-child(4) {
+        top: 27vh;
+        right: calc(50% + 160px);
+      }
+
+      > :nth-child(5) {
+        top: -120px;
+        left: calc(50% - 40px);
+      }
+    }
+  }
+}
+
+.o-star {
+  --size: 28px;
+  --dur: 2.4s;
+  --delay: 0s;
+
+  position: absolute;
+  width: var(--size);
+  height: calc(var(--size) * 1.65);
+  background: url(/images/other/star.png) no-repeat center / contain;
+  animation: breathe var(--dur) ease-in-out var(--delay) infinite;
+  opacity: 0;
+
+  &.-lg {
+    --size: 40px;
+    --dur: 3.2s;
+    --delay: 0.3s;
+  }
+
+  &.-md {
+    --size: 32px;
+    --dur: 4s;
+    --delay: 0.6s;
+  }
+
+  &.-sm {
+    --size: 25px;
+    --dur: 2.4s;
+    --delay: 0.2s;
   }
 }
 
@@ -386,7 +470,7 @@
     border: 1px solid rgba($color: #fff, $alpha: 0.3);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    transition: 0.6s;
+    transition: 0.6s !important;
 
     &::after {
       content: "";
@@ -412,7 +496,8 @@
 
     @media (hover: hover) {
       &:hover {
-        transform: translateY(-8px);
+        transform: translateY(-8px) !important;
+        transition-delay: none !important;
         &::after {
           -webkit-clip-path: circle(150% at 100% 0);
           clip-path: circle(150% at 100% 0);
@@ -563,12 +648,48 @@
     padding-left: 60px;
 
     @at-root & #{$root} {
+      &__wrap {
+        padding-top: 10px;
+        // transition-timing-function: linear !important;
+      }
+
       &__slide {
         width: 280px;
 
         &:nth-of-type(2n) {
           margin-top: 40px;
         }
+
+        @media (hover: hover) {
+          &:hover {
+            transform: translateY(-8px);
+            &::after {
+              -webkit-clip-path: circle(150% at 100% 0);
+              clip-path: circle(150% at 100% 0);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.l-comment {
+  &__star {
+    position: relative;
+
+    > :nth-child(1) {
+      top: -80px;
+      right: calc(50% - 570px);
+      z-index: 20;
+    }
+  }
+
+  @include medias.breakpoint-down("md") {
+    &__star {
+      > :nth-child(1) {
+        top: -33px;
+        right: calc(5%);
       }
     }
   }
