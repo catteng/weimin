@@ -87,7 +87,7 @@
         </div>
 
         <!-- service -->
-        <div class="l-block__item -service" id="more">
+        <div class="l-block__item -serviceList" id="more">
             <div class="l-service">
                 <video class="l-service__bg" src="/video/service.mp4" autoplay muted loop playsinline></video>
                 <div class="l-service__wrap">
@@ -132,7 +132,7 @@
                                 </div>
                             </li>
                             <li class="c-serviceList__item" data-aos="fade-up" data-aos-delay="300">
-                                <img class="c-serviceList__icon" src="/images/icon/frame.svg" alt="一頁式品牌形象網站">
+                                <img class="c-serviceList__icon" src="/images/icon/web.svg" alt="一頁式品牌形象網站">
                                 <div class="c-serviceList__content">
                                     <div class="c-serviceList__title">一頁式品牌形象網站</div>
                                     <div class="c-serviceList__text">#高效轉換落地頁 #RWD響應式網頁 #網站速度優化</div>
@@ -193,43 +193,43 @@ const waveTexts = [
 const partner = [
     {
         name: 'MN studio',
-        logo: '/images/partner/mn-studio.png',
+        logo: '/images/section/partner/mn-studio.png',
         url: '',
         filter: false
     },
     {
         name: '璞印坊',
-        logo: '/images/partner/print.png',
+        logo: '/images/section/partner/print.png',
         url: 'https://www.instagram.com/print.fun888/',
         filter: true
     },
     {
         name: '一刻印章',
-        logo: '/images/partner/moment.png',
+        logo: '/images/section/partner/moment.png',
         url: 'https://www.instagram.com/moment.8188/',
         filter: true
     },
     {
         name: 'Lizly Design',
-        logo: '/images/partner/lizly-design.png',
+        logo: '/images/section/partner/lizly-design.png',
         url: 'https://www.lizlydesign.com/',
         filter: true
     },
     {
         name: '基億實業',
-        logo: '/images/partner/ji-yi-industrial.png',
+        logo: '/images/section/partner/ji-yi-industrial.png',
         url: '',
         filter: true
     },
     {
         name: 'Rico 婚紗工作室',
-        logo: '/images/partner/rico.png',
+        logo: '/images/section/partner/rico.png',
         url: '',
         filter: false
     },
     {
         name: '囍字成章',
-        logo: '/images/partner/seal.png',
+        logo: '/images/section/partner/seal.png',
         url: '',
         filter: true
     }

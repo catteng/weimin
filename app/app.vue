@@ -10,7 +10,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
+  <div class="l-container">
     <LayoutHeader />
     <NuxtPage />
     <LayoutFooter />

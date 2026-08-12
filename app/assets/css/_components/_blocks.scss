@@ -9,6 +9,16 @@
   color: #fff;
   background: #000;
 
+  &.-line {
+    background:
+      url(/images/background/line.png) no-repeat top right calc(50% + 150px) /
+        2100px 1800px,
+      url(/images/background/blur-bu.svg) no-repeat top 150px right
+        calc(50% - 100px) / 800px,
+      url(/images/background/blur-yl.svg) no-repeat top -100px left
+        calc(50% - 580px) / 700px;
+  }
+
   &__item {
     &.-kv {
       display: flex;
@@ -64,9 +74,23 @@
         }
       }
     }
+
+    &.-serviceList {
+      scroll-margin-top: 70px;
+    }
   }
 
   @include medias.breakpoint-down("md") {
+    &.-line {
+      background:
+        url(/images/background/line.png) no-repeat top right calc(50% + 0px) /
+          1200px 1029px,
+        url(/images/background/blur-bu.svg) no-repeat top 150px right
+          calc(50% - 100px) / 800px,
+        url(/images/background/blur-yl.svg) no-repeat top -100px left
+          calc(50% - 580px) / 700px;
+    }
+
     &__bg {
       display: none;
     }
@@ -75,7 +99,7 @@
       &.-kv {
         height: calc(100dvh + 100px);
       }
-      
+
       &.-feature {
         padding: 20px 0 100px 0;
         background:
@@ -86,6 +110,18 @@
           url(/images/background/wave-circle-op3.svg) no-repeat left
             calc(50% + 100px) top 10px / 1200px;
       }
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &.-line {
+      background:
+        url(/images/background/line.png) no-repeat top 55px right calc(50% + 60px) /
+          1000px 857px,
+        url(/images/background/blur-bu.svg) no-repeat top 150px right
+          calc(50% - 100px) / 800px,
+        url(/images/background/blur-yl.svg) no-repeat top -80px left
+          calc(50% - 180px) / 500px;
     }
   }
 }

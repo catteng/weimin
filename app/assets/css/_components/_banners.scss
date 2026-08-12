@@ -1,0 +1,68 @@
+@use "./../_mixins/_medias" as medias;
+@use "./../_mixins/_wrapper" as wrapper;
+
+.c-banner {
+  @include wrapper.wrapper();
+  padding-top: 40px;
+  padding-bottom: 40px;
+  animation: fadeUp 1s ease forwards;
+
+  &__title {
+    font-family: Roboto Mono;
+    font-weight: bold;
+    color: #c78a03;
+    font-size: 40px;
+  }
+
+  &__subtitle {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+    max-width: 600px;
+    padding-left: 18px;
+    margin-top: 40px;
+    line-height: 200%;
+    font-size: 20px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: end;
+
+    &:nth-of-type(1) {
+      align-self: flex-start;
+    }
+  }
+
+  &__sign {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 18px;
+    margin-top: 12px;
+    object-fit: contain;
+    background: url(/images/logo/sign.png) no-repeat center/contain;
+  }
+
+  @include medias.breakpoint-down("md") {
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 20px;
+    }
+
+    &__content {
+      max-width: 400px;
+      padding-left: 0;
+      font-size: 14px;
+    }
+  }
+}

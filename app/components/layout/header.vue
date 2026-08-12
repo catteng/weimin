@@ -1,23 +1,25 @@
 <template>
     <div class="l-header">
         <div class="l-header__wrap">
-            <img class="l-header__logo" src="/images/logo/logo-wt.svg" alt="蔚泯 WEIMIN｜廣告・KOL短影音・SEO/GEO・視覺策略・品牌整合">
+            <a class="l-header__logo" href="/" target="_self">
+                <img src="/images/logo/logo-wt.svg" alt="蔚泯 WEIMIN｜廣告・KOL短影音・SEO/GEO・視覺策略・品牌整合">
+            </a>
             <div class="l-header__menu" :class="{ 'is-active': isMenuOpen }">
                 <ul class="c-headerMenu" :class="{ 'is-active': isMenuOpen }">
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">服務內容</a>
+                        <a href="/service" class="c-headerMenu__link">服務內容</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">合作範例</a>
+                        <a href="/cooperation" class="c-headerMenu__link">合作範例</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">方案項目</a>
+                        <a href="/price" class="c-headerMenu__link">方案項目</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">常見問答</a>
+                        <a href="/faq" class="c-headerMenu__link">常見問答</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">關於蔚泯</a>
+                        <a href="/about" class="c-headerMenu__link">關於蔚泯</a>
                     </li>
                 </ul>
             </div>

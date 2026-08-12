@@ -18,6 +18,17 @@ body {
     }
   }
 }
+
+.l-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  > :nth-child(2) {
+    flex: 1 0 auto;
+    margin-top: 88px;
+  }
+}
 /* ==========================================================================
    Header
    ========================================================================== */
@@ -27,6 +38,7 @@ body {
   width: 100%;
   padding: 12px 0;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 100;
   transition: 0.3s;
 
@@ -42,6 +54,12 @@ body {
     height: 60px;
     object-fit: contain;
     transition: 0.3s;
+    flex: 0 0 auto;
+    
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__menu {
@@ -257,13 +275,12 @@ body {
   }
 
   @include medias.breakpoint-down("md") {
-
     &__wrap {
       flex-wrap: wrap;
       gap: 40px;
       padding-bottom: 80px;
-      background: url(/images/background/footer.png) no-repeat bottom center/390px
-        96px;
+      background: url(/images/background/footer.png) no-repeat bottom
+        center/390px 96px;
       font-size: 14px;
     }
 
