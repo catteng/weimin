@@ -2,9 +2,11 @@
 @use "./../_mixins/_wrapper" as wrapper;
 
 .c-banner {
+  $root: &;
+
   @include wrapper.wrapper();
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   animation: fadeUp 1s ease forwards;
 
   &__title {
@@ -50,6 +52,23 @@
     background: url(/images/logo/sign.png) no-repeat center/contain;
   }
 
+  &__star {
+    position: relative;
+
+    > :nth-child(1) {
+      top: -240px;
+      left: 500px;
+    }
+  }
+
+  &.-sm {
+    @at-root & #{$root} {
+      &__content {
+        max-width: 470px;
+      }
+    }
+  }
+
   @include medias.breakpoint-down("md") {
     &__title {
       font-size: 28px;
@@ -64,5 +83,27 @@
       padding-left: 0;
       font-size: 14px;
     }
+
+    &__star {
+      position: relative;
+
+      > :nth-child(1) {
+        top: -200px;
+        left: 300px;
+      }
+    }
+
+    &.-sm {
+    @at-root & #{$root} {
+      &__content {
+        max-width: 370px;
+      }
+    }
+  }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

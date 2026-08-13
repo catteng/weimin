@@ -175,7 +175,6 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { Swiper } from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-// import { Pagination, Navigation } from 'swiper/modules';
 
 /** kv 文字動畫 */
 const waveTexts = [

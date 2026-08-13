@@ -19,7 +19,17 @@
         calc(50% - 580px) / 700px;
   }
 
+  &.-wave {
+    background:
+      url(/images/background/wave.png) no-repeat top -100px right
+        calc(50% - 320px) / 1400px 1400px,
+      url(/images/background/blur-yl.svg) no-repeat top -100px left
+        calc(50% - 580px) / 700px;
+  }
+
   &__item {
+    padding: 40px 0;
+
     &.-kv {
       display: flex;
       flex-direction: column;
@@ -91,6 +101,14 @@
           calc(50% - 580px) / 700px;
     }
 
+    &.-wave {
+      background:
+        url(/images/background/wave.png) no-repeat top -150px right
+          calc(50% - 380px) / 1200px 1200px,
+        url(/images/background/blur-yl.svg) no-repeat top -100px left
+          calc(50% - 580px) / 700px;
+    }
+
     &__bg {
       display: none;
     }
@@ -116,12 +134,20 @@
   @include medias.breakpoint-down("sm") {
     &.-line {
       background:
-        url(/images/background/line.png) no-repeat top 55px right calc(50% + 60px) /
-          1000px 857px,
+        url(/images/background/line.png) no-repeat top 55px right
+          calc(50% + 60px) / 1000px 857px,
         url(/images/background/blur-bu.svg) no-repeat top 150px right
           calc(50% - 100px) / 800px,
         url(/images/background/blur-yl.svg) no-repeat top -80px left
           calc(50% - 180px) / 500px;
+    }
+
+    &.-wave {
+      background:
+        url(/images/background/wave.png) no-repeat top -50px right
+          calc(50% - 100px) / 600px 600px,
+        url(/images/background/blur-yl.svg) no-repeat top -100px left
+          calc(50% - 580px) / 700px;
     }
   }
 }

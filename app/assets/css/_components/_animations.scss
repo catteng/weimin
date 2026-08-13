@@ -25,6 +25,25 @@
   }
 }
 
+@keyframes gift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  12% {
+    transform: translateY(2px) scale(1.12, 0.86);
+  }
+  38% {
+    transform: translateY(-12px) scale(0.9, 1.1);
+  }
+  62% {
+    transform: translateY(-4px) scale(0.98, 1.02);
+  }
+  76% {
+    transform: translateY(0) scale(1.06, 0.94);
+  }
+}
+
 @keyframes blink {
   0%,
   100% {

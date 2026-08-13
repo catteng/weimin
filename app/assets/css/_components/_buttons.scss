@@ -58,6 +58,11 @@
     }
   }
 
+  &.-dark {
+    background: #2B2414;
+    color: #fff;
+  }
+
   @media (hover: hover) {
     &:hover {
       transform: scale(1.05);

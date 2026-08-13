@@ -10,15 +10,17 @@
                     <span class="c-banner__item">── 看見只是開始．心動是過程．被選擇才是結局。</span>
                     <span class="c-banner__sign"></span>
                 </div>
+                <div class="c-banner__star">
+                    <div class="o-star"></div>
+                </div>
             </div>
         </div>
 
         <div class="l-block__item">
             <div class="l-serviceCard" >
                 <div class="l-serviceCard__wrap" data-aos="fade-up">
-                    <div v-for="(item, index) in services" :ref="(element) => { serviceCardElements[index] = element as HTMLElement }" class="l-serviceCard__item" :class="{ 'is-active': index === activeServiceIndex }" :key="index">
-                        <div class="c-service" :class="{ 'is-active': index === activeServiceIndex }" @mouseenter="activateOnDesktop(index)" @click="activateOnMobile(index)">
-                        <!-- <div class="c-service" :class="{ 'is-active': index === 4 }" > -->
+                    <div v-for="(item, index) in services" :ref="(element) => { cards[index] = element as HTMLElement }" class="l-serviceCard__item" :class="{ 'is-active': isOpen(index) }" :key="index">
+                        <div class="c-service" :class="{ 'is-active': isOpen(index) }" @mouseenter="isPC(index)" @click="isMB(index)">
                             <img class="c-service__bg" :src="`/images/section/service/${item.icon}.jpg`" :alt="item.title" />
                             <div class="c-service__mask"></div>
                             <div class="c-service__wrap">
@@ -46,33 +48,51 @@
 </template>
 
 <script lang="ts" setup>
-const activeServiceIndex = ref(0)
-const mobileBreakpoint = 1200
-const serviceCardElements = ref<HTMLElement[]>([])
+const openCards = ref([0])
+const breakpoint = 1200
+const cards = ref<HTMLElement[]>([])
+let clickId = 0
 
-function activateOnDesktop(index: number) {
-    if (window.innerWidth > mobileBreakpoint) {
-        activeServiceIndex.value = index
+function isOpen(index: number) {
+    return openCards.value.includes(index)
+}
+
+function isPC(index: number) {
+    if (window.innerWidth > breakpoint) {
+        openCards.value = [index]
     }
 }
 
-function activateOnMobile(index: number) {
-    if (window.innerWidth <= mobileBreakpoint) {
-        activeServiceIndex.value = index
-        nextTick(() => {
-            window.setTimeout(() => {
-                const serviceCard = serviceCardElements.value[index]
-                const headerHeight = document.querySelector<HTMLElement>('.l-header')?.offsetHeight ?? 0
+function isMB(index: number) {
+    if (window.innerWidth > breakpoint) return
 
-                if (!serviceCard) return
+    const card = cards.value[index]
+    if (!card) return
 
-                window.scrollTo({
-                    top: serviceCard.getBoundingClientRect().top + window.scrollY - headerHeight - 16,
-                    behavior: 'smooth'
-                })
-            }, 600)
-        })
+    const id = ++clickId
+    const header = document.querySelector<HTMLElement>('.l-header')?.offsetHeight ?? 0
+    let scrollTimer: number | undefined
+
+    const open = () => {
+        window.removeEventListener('scroll', stopScroll)
+        window.clearTimeout(scrollTimer)
+
+        if (id === clickId && !isOpen(index)) {
+            openCards.value = [...openCards.value, index]
+        }
     }
+
+    const stopScroll = () => {
+        window.clearTimeout(scrollTimer)
+        scrollTimer = window.setTimeout(open, 100)
+    }
+
+    window.addEventListener('scroll', stopScroll, { passive: true })
+    window.scrollTo({
+        top: card.getBoundingClientRect().top + window.scrollY - header - 16,
+        behavior: 'smooth'
+    })
+    stopScroll()
 }
 
 const services = [

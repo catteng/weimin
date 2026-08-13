@@ -1,0 +1,107 @@
+@use "./../_mixins/_medias" as medias;
+@use "./../_mixins/_wrapper" as wrapper;
+
+.c-carousel {
+  $root: &;
+
+  &__slide {
+    position: relative;
+    transition: 0.3s;
+
+    &.is-tooltipOpen {
+      z-index: 1;
+    }
+  }
+
+  &.-comment {
+    margin: 60px 0;
+    padding-left: 60px;
+
+    @at-root & #{$root} {
+      &__wrap {
+        padding-top: 10px;
+      }
+
+      &__slide {
+        width: 280px;
+
+        &:nth-of-type(2n) {
+          margin-top: 40px;
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            transform: translateY(-8px);
+            &::after {
+              -webkit-clip-path: circle(150% at 100% 0);
+              clip-path: circle(150% at 100% 0);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-plan {
+    padding-left: calc(50% - 570px);
+
+    @at-root & #{$root} {
+      &__slide {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  }
+
+   &.-custom {
+    @at-root & #{$root} {
+      &__slide {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+      }
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &.-plan {
+      padding-left: 32px;
+     
+    }
+
+     &.-custom {
+      padding-left: 12px;
+    }
+  }
+}
+
+.o-carouselNav {
+  $root: &;
+  display: flex;
+  gap: 8px;
+
+  &__prev,
+  &__next {
+    display: flex;
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
+
+    mask: {
+      position: center;
+      size: contain;
+      repeat: no-repeat;
+    }
+    mask-image: url(/images/icon/prev.svg);
+    background: #fff;
+    cursor: pointer;
+  }
+
+  &__next {
+    mask-image: url(/images/icon/next.svg);
+  }
+
+  @include medias.breakpoint-down("sm") {
+    bottom: -185px;
+  }
+}
