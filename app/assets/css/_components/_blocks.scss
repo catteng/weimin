@@ -9,10 +9,14 @@
   color: #fff;
   background: #000;
 
+  &__wrap {
+    @include wrapper.wrapper();
+  }
+
   &.-line {
     background:
       url(/images/background/line.png) no-repeat top right calc(50% + 150px) /
-        2100px 1800px,
+        2100px 2000px,
       url(/images/background/blur-bu.svg) no-repeat top 150px right
         calc(50% - 100px) / 800px,
       url(/images/background/blur-yl.svg) no-repeat top -100px left
@@ -88,6 +92,40 @@
     &.-serviceList {
       scroll-margin-top: 70px;
     }
+
+    &.-faq {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: rgba($color: #000, $alpha: 0.3);
+      backdrop-filter: blur(4px);
+      padding: 40px 80px;
+
+      @at-root & #{$root} {
+        &__overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: rgba($color: #000, $alpha: 0.85);
+          pointer-events: none;
+        }
+
+        &__wrap {
+          position: relative;
+          z-index: 2;
+        }
+
+        &__video {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+        }
+      }
+    }
   }
 
   @include medias.breakpoint-down("md") {
@@ -149,5 +187,21 @@
         url(/images/background/blur-yl.svg) no-repeat top -100px left
           calc(50% - 580px) / 700px;
     }
+
+    &__item {
+      &.-faq {
+        background: rgba($color: #000, $alpha: 0.3);
+        backdrop-filter: blur(4px);
+        padding: 40px 0px 60px 0;
+      }
+    }
   }
+}
+
+.faq-video-enter-active {
+  transition: opacity 1s;
+}
+
+.faq-video-enter-from {
+  opacity: 0;
 }

@@ -1641,3 +1641,261 @@
     }
   }
 }
+
+// faq
+.l-accordion {
+  $root: &;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &.-wt {
+    background: transparent;
+    @include wrapper.wrapper();
+
+    @at-root & #{$root} {
+      &__wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(8px);
+      }
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &.-wt {
+      padding: 0;
+
+      @at-root & #{$root} {
+        &__wrap {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+.c-accordion {
+  $root: &;
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  border: 1px solid rgba($color: #fff, $alpha: 0.3);
+  border-radius: 8px;
+  transition: 0.3s;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    margin-top: 18px;
+  }
+
+  &__head {
+    position: relative;
+    display: flex;
+    padding: 16px 0;
+    width: 100%;
+    text-align: start;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0);
+    transition: 0.3s;
+  }
+
+  &__toggle {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    margin-top: 18px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      mask: url(/images/icon/plus.svg) no-repeat center/contain;
+      background: #fff;
+      transform: rotateZ(0deg);
+      opacity: 1;
+      transition: 0.3s;
+    }
+
+    &::after {
+      transform: rotateZ(-90deg);
+      mask-image: url(/images/icon/minus.svg);
+      opacity: 0;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      grid-template-rows 0.4s cubic-bezier(0.5, 0, 0.5, 1),
+      opacity 0.35s;
+  }
+
+  &__inner {
+    overflow: hidden;
+    transition: 0.35s;
+  }
+
+  &.is-active {
+    padding-bottom: 12px;
+    background: rgba($color: #e8c47e, $alpha: 0.3);
+    border-color: rgba($color: #e8c47e, $alpha: 0);
+
+    @at-root & #{$root} {
+      &__toggle {
+        &::before {
+          opacity: 0;
+          transform: rotateZ(90deg);
+        }
+
+        &::after {
+          opacity: 1;
+          transform: rotateZ(0deg);
+        }
+      }
+
+      &__head {
+        margin-bottom: 12px;
+        border-color: rgba($color: #fff, $alpha: 0.3);
+      }
+
+      &__content {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    gap: 8px;
+    padding: 0 12px;
+
+    &__head {
+      font-size: 16px;
+    }
+  }
+}
+
+.c-tab {
+  display: flex;
+  gap: 20px;
+
+  &__topic {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 260px;
+    flex: 0 0 auto;
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: bold;
+    width: 76px;
+    text-align: center;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 0 8px 20px;
+    gap: 10px;
+    opacity: 0.4;
+    transition: 0.6s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 8px;
+      width: 2px;
+      height: 100%;
+      background: #c78a03;
+      border-radius: 100px;
+      opacity: 0;
+      transition: 1s;
+    }
+
+    &.is-active {
+      opacity: 1;
+
+      &::before {
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__panel {
+    width: 100%;
+  }
+
+  .tab-panel-enter-active {
+    transition:
+      opacity 1s,
+      transform 1s;
+  }
+
+  .tab-panel-leave-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .tab-panel-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  @include medias.breakpoint-down('sm'){
+    flex-direction: column;
+    gap: 40px;
+  }
+}
