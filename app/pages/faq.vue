@@ -2,7 +2,7 @@
     <div class="l-block -line">
         <!-- banner -->
         <div class="l-block__item">
-            <div class="c-banner -sm">
+            <div class="c-banner">
                 <div class="c-banner__title">Q&A</div>
                 <div class="c-banner__subtitle">常見問題</div>
                 <div class="c-banner__content">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- collab -->
-        <div class="l-block__item">
+        <div class="l-block__item" data-aos="fade-up">
             <div class="l-accordion -wt">
                 <div class="l-accordion__wrap">
                     <div class="l-accordion__title">
@@ -40,7 +40,7 @@
         </div>
 
         <!-- marketing -->
-        <div class="l-block__item -faq">
+        <div class="l-block__item -faq" data-aos="fade-up">
             <Transition name="faq-video">
                 <video :key="activeService.id" class="l-block__video" :src="`/video/${activeService.id}.mp4`" autoplay muted loop playsinline></video>
             </Transition>
@@ -77,6 +77,71 @@
                 </div>
             </div>
         </div>
+
+        <!-- contact -->
+        <div class="l-block__item -contact">
+            <div class="c-banner -faq" data-aos="fade-up">
+                <div class="c-banner__title">Contact us</div>
+                <div class="c-banner__content">
+                    <span class="c-banner__item">「讓每次的曝光，都成為消費者心中更好的選擇」</span>
+                    <span class="c-banner__item">── 在喧囂的社群中，為品牌沉澱出無法忽視的價值。</span>
+                    <span class="c-banner__sign"></span>
+                </div>
+                <div class="c-banner__star">
+                    <div class="o-star"></div>
+                </div>
+            </div>
+            <div class="l-contact">
+                <div class="l-contact__slogon">
+                    <div class="o-quote -sm">
+                        <div class="o-quote__title">
+                            <span><b>看見 __ </b> 只是開始</span>
+                            <br><span><b>心動 __ </b> 是過程</span>
+                            <br><span><b>被選擇 __ </b> 才是結局</span>
+                        </div>
+                    </div>
+                    <div class="o-star -sm"></div>
+                </div>
+                <div class="l-contact__content">
+                    <div class="l-contact__form">
+                        <div class="c-form">
+                            <div class="c-form__wrap">
+                                <div class="c-form__item">
+                                    <div class="c-form__title">姓名/品牌名稱 name</div>
+                                    <input v-model="form.name" type="text" class="c-form__content" placeholder="請輸入姓名或品牌名稱">
+                                </div>
+                                <div class="c-form__item">
+                                    <div class="c-form__title">聯絡電話 phone</div>
+                                    <input v-model="form.phone" type="text" class="c-form__content" placeholder="請輸入聯絡電話">
+                                </div>
+                                <div class="c-form__item">
+                                    <div class="c-form__title">聯絡時段 contact time</div>
+                                    <input v-model="form.contactTime" type="text" class="c-form__content" placeholder="例 : 9:00~14:00">
+                                </div>
+                                <div class="c-form__item">
+                                    <div class="c-form__title">諮詢項目 service</div>
+                                    <input v-model="form.service" type="text" class="c-form__content" placeholder="例 : 想了解方案套裝價格">
+                                </div>
+                                <div class="c-form__item -lg">
+                                    <div class="c-form__title">信箱 mail</div>
+                                    <input v-model="form.email" type="email" class="c-form__content" placeholder="請輸入信箱">
+                                </div>
+                                <div class="c-form__item -lg">
+                                    <div class="c-form__title">讓我們更了解您 get to know you</div>
+                                    <input v-model="form.message" type="text" class="c-form__content" placeholder="請輸入您的想要及需要">
+                                </div>
+                            </div>
+                            <div class="c-form__action">
+                                <button class="o-btn" @click="submit()">開啟專屬規劃</button>
+                                <span>填寫後，我們將在 24 小時內與您聯繫。 </span>
+                            </div>
+                        </div>
+                        <div class="o-star -lg"></div>
+                    </div>
+                    <div class="l-contact__footer">讓專業各司其職，你的品牌才能美美地上線、穩穩地成交。</div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -85,6 +150,30 @@ import { computed, ref } from 'vue';
 const collabOpen = ref<boolean[]>([true]);
 const serviceOpen = ref<Record<string, boolean[]>>({});
 const activeGroup = ref(0);
+
+const form = ref({
+    name: '',
+    phone: '',
+    contactTime: '',
+    service: '',
+    email: '',
+    message: ''
+});
+
+const submit = () => {
+    const subject = `【 FAQ 諮詢 】${form.value.name || '未填寫姓名'}`;
+    const body = [
+        `姓名/品牌名稱：${form.value.name}`,
+        `聯絡電話：${form.value.phone}`,
+        `聯絡時段：${form.value.contactTime}`,
+        `諮詢項目：${form.value.service}`,
+        `信箱：${form.value.email}`,
+        `備註：${form.value.message}`
+    ].join('\n');
+
+    const mailtoUrl = `mailto:vivi930038@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+};
 
 const toggleCollab = (index: number) => {
     collabOpen.value[index] = !collabOpen.value[index];

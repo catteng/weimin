@@ -69,6 +69,30 @@
     }
   }
 
+  &.-faq {
+    @at-root & #{$root} {
+      &__title {
+        font-family: "Roboto Serif";
+        color: rgba($color: #e8c47e, $alpha: 0.7);
+        font-size: 120px;
+        height: 140px;
+      }
+
+      &__content {
+        max-width: 700px;
+      }
+
+      &__star {
+        position: relative;
+
+        > :nth-child(1) {
+          top: -240px;
+          left: 800px;
+        }
+      }
+    }
+  }
+
   @include medias.breakpoint-down("md") {
     &__title {
       font-size: 28px;
@@ -94,16 +118,54 @@
     }
 
     &.-sm {
-    @at-root & #{$root} {
-      &__content {
-        max-width: 370px;
+      @at-root & #{$root} {
+        &__content {
+          max-width: 370px;
+        }
       }
     }
-  }
+
+    &.-faq {
+      @at-root & #{$root} {
+        &__title {
+          font-size: 80px;
+          height: 80px;
+        }
+
+        &__content {
+          max-width: 480px;
+        }
+
+        &__star {
+          position: relative;
+
+          > :nth-child(1) {
+            top: -240px;
+            left: 800px;
+          }
+        }
+      }
+    }
   }
 
   @include medias.breakpoint-down("sm") {
     padding-top: 0;
     padding-bottom: 0;
+
+    &.-faq {
+      @at-root & #{$root} {
+        &__title {
+          font-size: 60px;
+          height: 60px;
+        }
+
+        &__star {
+          > :nth-child(1) {
+            top: -240px;
+            left: 155px;
+          }
+        }
+      }
+    }
   }
 }

@@ -15,8 +15,8 @@
 
   &.-line {
     background:
-      url(/images/background/line.png) no-repeat top right calc(50% + 150px) /
-        2100px 2000px,
+      url(/images/background/line.png) no-repeat top -50px right
+        calc(50% + 400px) / 3000px 3000px,
       url(/images/background/blur-bu.svg) no-repeat top 150px right
         calc(50% - 100px) / 800px,
       url(/images/background/blur-yl.svg) no-repeat top -100px left
@@ -99,7 +99,7 @@
       overflow: hidden;
       background: rgba($color: #000, $alpha: 0.3);
       backdrop-filter: blur(4px);
-      padding: 40px 80px;
+      padding: 40px 80px 100px 40px;
 
       @at-root & #{$root} {
         &__overlay {
@@ -126,13 +126,18 @@
         }
       }
     }
+
+    &.-contact {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
   }
 
   @include medias.breakpoint-down("md") {
     &.-line {
       background:
-        url(/images/background/line.png) no-repeat top right calc(50% + 0px) /
-          1200px 1029px,
+        url(/images/background/line.png) no-repeat top -80px right calc(50% + 300px) /
+          2000px 3000px,
         url(/images/background/blur-bu.svg) no-repeat top 150px right
           calc(50% - 100px) / 800px,
         url(/images/background/blur-yl.svg) no-repeat top -100px left
