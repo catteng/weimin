@@ -79,7 +79,7 @@
         </div>
 
         <!-- contact -->
-        <div class="l-block__item -contact">
+        <div class="l-block__item -blur" id="contact">
             <div class="c-banner -faq" data-aos="fade-up">
                 <div class="c-banner__title">Contact us</div>
                 <div class="c-banner__content">

@@ -10,7 +10,7 @@
                         <a href="/service" class="c-headerMenu__link">服務內容</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="/cooperation" class="c-headerMenu__link">合作範例</a>
+                        <a href="#" class="c-headerMenu__link">合作範例</a>
                     </li>
                     <li class="c-headerMenu__item">
                         <a href="/price" class="c-headerMenu__link">方案項目</a>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="l-header__action">
-                <a href="#" class="o-starBtn">免費諮詢</a>
+                <a href="/faq#contact" class="o-starBtn">免費諮詢</a>
             </div>
             <button class="l-header__toggle" :class="{ 'is-active': isMenuOpen }" @click="menuToggle()"></button>
         </div>

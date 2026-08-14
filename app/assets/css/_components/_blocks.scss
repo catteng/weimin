@@ -127,9 +127,13 @@
       }
     }
 
-    &.-contact {
+    &.-blur {
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+    }
+
+    &.-p0 {
+      padding: 0;
     }
   }
 
@@ -178,7 +182,7 @@
     &.-line {
       background:
         url(/images/background/line.png) no-repeat top 55px right
-          calc(50% + 60px) / 1000px 857px,
+          calc(50% + 120px) / 1000px 2000px,
         url(/images/background/blur-bu.svg) no-repeat top 150px right
           calc(50% - 100px) / 800px,
         url(/images/background/blur-yl.svg) no-repeat top -80px left

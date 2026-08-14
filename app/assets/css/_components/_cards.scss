@@ -28,15 +28,11 @@
   @include medias.breakpoint-down("sm") {
     justify-content: center;
     gap: 20px;
-    font-size: 28px;
+    font-size: 24px;
 
     &::before {
       width: 24px;
     }
-  }
-
-  @include medias.breakpoint-down("sm") {
-    font-size: 24px;
   }
 }
 
@@ -401,7 +397,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
   width: 100%;
   max-width: 900px;
   padding: 100px 40px;
@@ -411,6 +407,20 @@
   &__title {
     font-size: 24px;
     font-weight: bold;
+
+    span {
+      font-weight: bold;
+      color: #dbab40;
+    }
+  }
+
+  &__content {
+    line-height: 180%;
+
+    span {
+      font-weight: bold;
+      color: #e8c47e;
+    }
   }
 
   &::before,
@@ -490,6 +500,12 @@
   }
 
   @include medias.breakpoint-down("sm") {
+    gap: 32px;
+
+    &__content {
+      // text-align: start;
+      font-size: 14px;
+    }
     &.-sm {
       width: 100%;
       padding: 60px;
@@ -2066,5 +2082,276 @@
     &__wrap {
       grid-template-columns: repeat(1, 1fr);
     }
+  }
+}
+
+// about us
+.c-why {
+  $root: &;
+
+  display: flex;
+  gap: 40px;
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    margin-left: -20px;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    padding-left: 20px;
+    opacity: 0.8;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-bottom: 12px;
+
+    & + & {
+      padding-top: 20px;
+      border-top: 1px solid rgba($color: #fff, $alpha: 0.3);
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    flex: 0 0 auto;
+  }
+
+  &__num {
+    position: relative;
+    font-family: "Roboto Mono";
+    font-weight: bold;
+    font-size: 28px;
+    padding-right: 10px;
+    width: 48px;
+
+    &::after {
+      content: "/";
+      position: absolute;
+      display: block;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: 18px;
+      font-weight: normal;
+      opacity: 0.2;
+    }
+  }
+
+  &__right {
+    opacity: 0.8;
+  }
+
+  @include medias.breakpoint-down("md") {
+    flex-direction: column;
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &__subtitle {
+      font-size: 16px;
+      margin-top: -20px;
+    }
+
+    &__item {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    &__left,
+    &__right {
+      width: 100%;
+    }
+
+    &__left {
+      position: relative;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    &__num {
+      position: absolute;
+      top: -40px;
+      left: -48px;
+      font-size: 48px;
+      opacity: 0.1;
+
+      &::after {
+        content: none;
+      }
+    }
+
+    &__item {
+      padding: 40px 0 32px 48px;
+
+      & + & {
+        padding-top: 40px;
+        border-top: 0px solid rgba($color: #fff, $alpha: 0.3);
+      }
+    }
+  }
+}
+
+.l-about {
+  background: rgba($color: #000000, $alpha: 0.8);
+  overflow: hidden;
+  padding: 40px 0;
+
+  &__wrap {
+    display: flex;
+    height: 500px;
+    @include wrapper.wrapper();
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    width: 400px;
+    height: 100%;
+    background: url(/images/section/about/about.png) no-repeat right/250px 500px;
+    flex: 0 0 auto;
+
+    .c-title {
+      font-size: 28px !important;
+    }
+  }
+
+  &__content {
+    position: relative;
+    min-width: 0;
+    flex: 1;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+      transform: scaleY(1);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    &::after {
+      top: auto;
+      bottom: 0;
+      transform: scaleY(-1);
+    }
+  }
+
+  &.-mb {
+    display: none;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  @include medias.breakpoint-down("md") {
+    &__head {
+      .c-title {
+        font-size: 22px !important;
+      }
+    }
+
+    &__wrap {
+      height: 360px;
+    }
+
+    &__head {
+      width: 300px;
+      height: 100%;
+      background: url(/images/section/about/about.png) no-repeat right/180px
+        360px;
+    }
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    &__head {
+      width: 280px;
+      height: 100%;
+      background: none;
+    }
+
+    &.-pc {
+      display: none;
+    }
+
+    &.-mb {
+      display: flex;
+    }
+  }
+}
+
+.o-brandCard {
+  display: flex;
+  gap: 20px;
+  margin: 40px 0;
+
+  &__num {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: "Roboto Mono";
+    font-size: 50px;
+    font-weight: bold;
+    color: rgba($color: #fff, $alpha: 1);
+
+    &::after {
+      content: "";
+      display: flex;
+      margin-top: 24px;
+      width: 1px;
+      height: 24px;
+      background: #fff;
+      transform: rotateZ(30deg);
+      opacity: 0.3;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &__highlight {
+    font-weight: bold;
+    color: #f0cc7e;
+  }
+
+  @include medias.breakpoint-down("sm") {
+    margin: 0;
   }
 }

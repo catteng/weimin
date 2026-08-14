@@ -53,7 +53,7 @@
     }
   }
 
-   &.-custom {
+  &.-custom {
     @at-root & #{$root} {
       &__slide {
         width: 100%;
@@ -63,13 +63,39 @@
     }
   }
 
+  &.-about {
+    height: 100%;
+
+    @at-root & #{$root} {
+      &__slide {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+
+        &.swiper-slide {
+          transition: 0.3s;
+        }
+
+        &.swiper-slide-prev,
+        &.swiper-slide-next {
+          opacity: 0.3;
+          transition: 0.3s;
+        }
+
+        &.swiper-slide-active {
+          opacity: 1;
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+
   @include medias.breakpoint-down("sm") {
     &.-plan {
       padding-left: 32px;
-     
     }
 
-     &.-custom {
+    &.-custom {
       padding-left: 12px;
     }
   }
