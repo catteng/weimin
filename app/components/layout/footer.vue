@@ -24,11 +24,11 @@
             </div>
             <div class="l-footer__right">
                 <div class="o-social">
-                    <a href="#" class="o-social__item" target="_blank" rel="noopener noreferrer">
+                    <a href="https://lin.ee/S2yG6zF" class="o-social__item" target="_blank" rel="noopener noreferrer">
                         <span class="o-social__icon -line"></span>
                         <div class="o-social__text">line</div>
                     </a>
-                    <a href="#" class="o-social__item" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/wei.min888" class="o-social__item" target="_blank" rel="noopener noreferrer">
                         <span class="o-social__icon -ig"></span>
                         <div class="o-social__text">instagram</div>
                     </a>

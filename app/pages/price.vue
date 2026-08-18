@@ -66,7 +66,7 @@
                                     </ul>
                                     <div class="c-plan__action" :class="{ '-notice': item.popup }">
                                         <button v-if="item.popup" class="c-plan__notice" @click="openNotice(item.condition)">注意事項</button>
-                                        <a href="#" class="o-btn" :class="{ '-dark': isActiveSlide(loopIndex, index) }" target="_self">立即諮詢</a>
+                                        <a href="https://lin.ee/S2yG6zF" class="o-btn" :class="{ '-dark': isActiveSlide(loopIndex, index) }" target="_blank">立即諮詢</a>
                                         <div class="o-tooltip" v-if="item.tooltip" :class="{ 'is-active': activeTooltipId === `${loopIndex}-${item.id}`, '-wt': isActiveSlide(loopIndex, index) }">
                                             <button class="o-tooltip__btn" :class="{ 'is-active': isActiveSlide(loopIndex, index) }" @click="activeTooltipId = activeTooltipId === `${loopIndex}-${item.id}` ? null : `${loopIndex}-${item.id}`"></button>
                                             <div class="o-tooltip__content">
@@ -151,7 +151,7 @@
                                             </li>
                                         </ul>
                                         <div class="c-customCard__action">
-                                            <a href="#" class="o-btn" target="_self">立即聯絡行銷宇宙</a>
+                                            <a href="https://lin.ee/S2yG6zF" class="o-btn" target="_blank">立即聯絡行銷宇宙</a>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                                             </ul>
                                         </div>
                                         <div class="c-customCard__action">
-                                            <a href="#" class="o-btn" target="_self">立即聯絡行銷宇宙</a>
+                                            <a href="https://lin.ee/S2yG6zF" class="o-btn" target="_blank">立即聯絡行銷宇宙</a>
                                         </div>
                                     </div>
                                 </div>
