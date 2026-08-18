@@ -38,6 +38,10 @@
                     </a>
                 </div>
             </div>
+            <div class="l-footer__copyright">
+                <span>Designed by wei</span>
+                <span>© 2026 weimin. All rights reserved</span>
+            </div>
         </div>
     </div>
 </template>
