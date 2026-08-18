@@ -15,7 +15,7 @@
                     <div class="c-kv__title">蔚然成風，初心不泯。<br>在繁盛之中，守住最純粹的初衷</div>
                     <div class="c-kv__action">
                         <a href="#more" class="o-btn" target="_self">了解更多</a>
-                        <a href="#" class="o-btn -secondary" target="_self">聯絡蔚泯</a>
+                        <a href="/about" class="o-btn -secondary" target="_self">聯絡蔚泯</a>
                     </div>
                     <div class="c-kv__slogon">
                         <span>── 從視覺的起點到數據的終點，</span>
@@ -141,7 +141,7 @@
                         </ul>
                     </div>
                     <div class="l-service__action" data-aos="fade-up">
-                        <a href="#" class="o-btn" target="_self">詳細內容</a>
+                        <a href="/service" class="o-btn" target="_self">詳細內容</a>
                     </div>
                 </div>
             </div>
@@ -153,12 +153,14 @@
                 <div class="l-comment__content" data-aos="fade-in">
                     <div class="c-carousel -comment swiper" data-swiper="comment">
                         <div class="c-carousel__wrap swiper-wrapper">
-                            <div v-for="loopIndex in 40" :key="loopIndex" class="c-carousel__slide swiper-slide">
-                                <div class="o-comment">
-                                    <div class="o-comment__name">車行老闆李先生</div>
-                                    <div class="o-comment__text">試過自己做社群，結果對做圖排版完全一竅不通，社群直接荒廢。幸好蔚泯小編非常專業，溝通過程也非常舒服。</div>
+                            <template v-for="loopIndex in 10" :key="loopIndex">
+                                <div v-for="item in comments" class="c-carousel__slide swiper-slide">
+                                    <div class="o-comment">
+                                        <div class="o-comment__name">{{ item.name }}</div>
+                                        <div class="o-comment__text">{{ item.text }}</div>
+                                    </div>
                                 </div>
-                            </div>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -231,6 +233,33 @@ const partner = [
         logo: '/images/section/partner/seal.png',
         url: '',
         filter: true
+    }
+]
+
+const comments = [
+    {
+        name: '車行老闆李先生',
+        text: '試過自己做社群，結果對做圖排版完全一竅不通，社群直接荒廢。幸好蔚泯小編非常專業，溝通過程也非常舒服。'
+    },
+    {
+        name: '小吃店闆娘黃小姐',
+        text: '以前就只做身邊的鄰居，新客很難找到我這裡，非常偶爾才會有過路客，多虧蔚泯優化了我的google商家跟設定關鍵字，陸續多了好多新的客人。'
+    },
+    {
+        name: '美業彭小姐',
+        text: '以前試過每天投100塊廣告，結果跟打水飄一樣，做優惠都只有老客戶知道。自從請蔚泯幫我做行銷跟投廣之後，來詢問的新客人大大增加，尤其是有節日的月份更明顯！效益真的變好很多~非常感謝蔚泯><'
+    },
+    {
+        name: '電腦店陳先生',
+        text: '有小編真的讓我輕鬆許多~~我們這種競爭激烈的電腦3C業，幾乎每天從早忙到晚，根本沒時間做宣傳與管理。還好有小編，不只幫我分擔壓力，做的文案也真的很有效益，真是相見恨晚XD~'
+    },
+    {
+        name: '醫材店石先生',
+        text: '有行銷想法的時候，可以有專業的美編人員從不同的角度一起做發想，並且提出有用的反饋，讓我們在做行銷的時候不會缺乏新想法，除了可以讓更多人看見我們，同時減少了很多負擔！'
+    },
+    {
+        name: '高級訂製印章店許小姐',
+        text: '本來以為做廣告只是『曝光好看』，沒想到廠商幫我優化了Google地圖和搜尋關鍵字後，每個月主動上門詢問的客戶多了一倍，很多人都是透過網路找到我，根本不用再自己跑業務推廣了。'
     }
 ]
 

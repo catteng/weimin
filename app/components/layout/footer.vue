@@ -7,7 +7,7 @@
                     <div class="o-footer__content -more">
                         <a href="/" class="o-footer__item" target="_self">首頁</a>
                         <a href="/service" class="o-footer__item" target="_self">服務內容</a>
-                        <a href="#" class="o-footer__item" target="_self">合作範例</a>
+                        <a href="/cooperate" class="o-footer__item" target="_self">合作範例</a>
                         <a href="/price" class="o-footer__item" target="_self">方案價格</a>
                         <a href="/faq" class="o-footer__item" target="_self">常見問答</a>
                         <a href="/about" class="o-footer__item" target="_self">關於蔚泯</a>

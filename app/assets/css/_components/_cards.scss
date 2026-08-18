@@ -43,6 +43,7 @@
   align-items: center;
   z-index: 1;
   flex: 1;
+  margin-bottom: 72px;
 
   &__wrap {
     display: flex;
@@ -643,6 +644,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 20px;
+  height: 100%;
   background: rgba($color: #fff, $alpha: 0.05);
   border: 1px solid rgba($color: #fff, $alpha: 0.3);
   backdrop-filter: blur(15px);
@@ -2269,6 +2271,13 @@
     display: none;
     flex-direction: column;
     padding: 0;
+    background:
+      url(/images/background/blur.svg) no-repeat left calc(50% - 120px)
+        top -80px / 800px,
+      url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
+        450px / 460px,
+      url(/images/background/wave-circle-op3.svg) no-repeat left
+        calc(50% + 100px) top 10px / 1200px;
   }
 
   @include medias.breakpoint-down("md") {
@@ -2353,5 +2362,38 @@
 
   @include medias.breakpoint-down("sm") {
     margin: 0;
+  }
+}
+
+// nodata
+.c-nodata {
+  @include wrapper.wrapper();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+
+  &__title {
+    font-family: "Roboto Serif";
+    font-size: 80px;
+    font-weight: bold;
+    color: rgba(232, 196, 126, 0.9);
+  }
+
+  &__text {
+    line-height: 200%;
+  }
+
+  &__action {
+    padding-top: 20px;
+  }
+
+  @include medias.breakpoint-down("sm") {
+    &__title {
+      font-size: 60px;
+    }
   }
 }

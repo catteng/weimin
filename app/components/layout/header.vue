@@ -6,11 +6,14 @@
             </a>
             <div class="l-header__menu" :class="{ 'is-active': isMenuOpen }">
                 <ul class="c-headerMenu" :class="{ 'is-active': isMenuOpen }">
+                    <li v-if="isMenuOpen" class="c-headerMenu__item">
+                        <a href="/" class="c-headerMenu__link">首頁</a>
+                    </li>
                     <li class="c-headerMenu__item">
                         <a href="/service" class="c-headerMenu__link">服務內容</a>
                     </li>
                     <li class="c-headerMenu__item">
-                        <a href="#" class="c-headerMenu__link">合作範例</a>
+                        <a href="/cooperate" class="c-headerMenu__link">合作範例</a>
                     </li>
                     <li class="c-headerMenu__item">
                         <a href="/price" class="c-headerMenu__link">方案項目</a>
