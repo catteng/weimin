@@ -43,13 +43,13 @@ function menuToggle() {
     isMenuOpen.value = !isMenuOpen.value;
 }
 
-watch(isMenuOpen, (newVal) => {
-    if (import.meta.client) {
-        if (newVal) {
-            document.body.classList.add('is-menuOpen');
-        } else {
-            document.body.classList.remove('is-menuOpen');
-        }
-    }
-});
+// watch(isMenuOpen, (newVal) => {
+//     if (import.meta.client) {
+//         if (newVal) {
+//             document.body.classList.add('is-menuOpen');
+//         } else {
+//             document.body.classList.remove('is-menuOpen');
+//         }
+//     }
+// });
 </script>

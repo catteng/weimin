@@ -29,62 +29,60 @@
 
             <div class="c-carousel swiper -plan" data-swiper="plan">
                 <div class="c-carousel__wrap swiper-wrapper">
-                    <template v-for="loopIndex in 3" :key="loopIndex">
-                        <div v-for="(item, index) in plan" :key="`${loopIndex}-${item.id}`" class="c-carousel__slide swiper-slide" :class="{ 'is-tooltipOpen': activeTooltipId === `${loopIndex}-${item.id}` }">
-                            <div class="c-plan" :class="{ 'is-active': isActiveSlide(loopIndex, index) }">
-                                <div class="c-plan__alpha">{{ item.id }}</div>
-                                <div class="c-plan__wrap">
-                                    <div class="c-plan__head" @click="goPlan">
-                                        <div class="c-plan__tag">{{ item.tag }}</div>
-                                        <div class="c-plan__title">{{ item.title }}</div>
-                                        <label v-if="item.id === 'E'" class="c-plan__switch" @click.stop>
-                                            <input v-model="isEPlanCollaborating" type="checkbox" class="c-plan__input">
-                                            <div class="c-plan__text">{{ isEPlanCollaborating ? '搭配A~D任一方案' : '未搭配A~D任一方案' }}</div>
-                                        </label>
-                                        <div class="c-plan__price">
-                                            <ul class="c-priceList" :class="{ 'is-active': isActiveSlide(loopIndex, index) }">
-                                                <li class="c-priceList__item">
-                                                    <span class="c-priceList__main">$&nbsp;&nbsp;{{ getPlanPrice(item).year }}</span>
-                                                    <span class="c-priceList__per">/ 年</span>
-                                                </li>
-                                                <li class="c-priceList__item">
-                                                    <span v-if="item.id !== 'E' || isEPlanCollaborating" class="c-priceList__origin">$ {{ item.origin.twoYears }}</span>
-                                                    <span class="c-priceList__num">$ {{ getPlanPrice(item).twoYears }}</span>
-                                                    <span class="c-priceList__per">/ 2年</span>
-                                                </li>
-                                                <li class="c-priceList__item">
-                                                    <span v-if="item.id !== 'E' || isEPlanCollaborating" class="c-priceList__origin">$ {{ item.origin.threeYears }}</span>
-                                                    <span class="c-priceList__num">$ {{ getPlanPrice(item).threeYears }}</span>
-                                                    <span class="c-priceList__per">/ 3年</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="c-plan__note" v-if="item.note" v-html="item.note"></div>
+                    <div v-for="(item, index) in plan" :key="item.id" class="c-carousel__slide swiper-slide" :class="{ 'is-tooltipOpen': activeTooltipId === item.id }">
+                        <div class="c-plan" :class="{ 'is-active': isActiveSlide(index) }">
+                            <div class="c-plan__alpha">{{ item.id }}</div>
+                            <div class="c-plan__wrap">
+                                <div class="c-plan__head">
+                                    <div class="c-plan__tag">{{ item.tag }}</div>
+                                    <div class="c-plan__title">{{ item.title }}</div>
+                                    <label v-if="item.id === 'E'" class="c-plan__switch" @click.stop>
+                                        <input v-model="isEPlanCollaborating" type="checkbox" class="c-plan__input">
+                                        <div class="c-plan__text">{{ isEPlanCollaborating ? '搭配A~D任一方案' : '未搭配A~D任一方案' }}</div>
+                                    </label>
+                                    <div class="c-plan__price">
+                                        <ul class="c-priceList" :class="{ 'is-active': isActiveSlide(index) }">
+                                            <li class="c-priceList__item">
+                                                <span class="c-priceList__main">$&nbsp;&nbsp;{{ getPlanPrice(item).year }}</span>
+                                                <span class="c-priceList__per">/ 年</span>
+                                            </li>
+                                            <li class="c-priceList__item">
+                                                <span v-if="item.id !== 'E' || isEPlanCollaborating" class="c-priceList__origin">$ {{ item.origin.twoYears }}</span>
+                                                <span class="c-priceList__num">$ {{ getPlanPrice(item).twoYears }}</span>
+                                                <span class="c-priceList__per">/ 2年</span>
+                                            </li>
+                                            <li class="c-priceList__item">
+                                                <span v-if="item.id !== 'E' || isEPlanCollaborating" class="c-priceList__origin">$ {{ item.origin.threeYears }}</span>
+                                                <span class="c-priceList__num">$ {{ getPlanPrice(item).threeYears }}</span>
+                                                <span class="c-priceList__per">/ 3年</span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul class="c-plan__list">
-                                        <li v-for="feature in item.list" :key="feature" class="c-plan__item" v-html="feature"></li>
-                                    </ul>
-                                    <div class="c-plan__action" :class="{ '-notice': item.popup }">
-                                        <button v-if="item.popup" class="c-plan__notice" @click="openNotice(item.condition)">注意事項</button>
-                                        <a href="https://lin.ee/S2yG6zF" class="o-btn" :class="{ '-dark': isActiveSlide(loopIndex, index) }" target="_blank">立即諮詢</a>
-                                        <div class="o-tooltip" v-if="item.tooltip" :class="{ 'is-active': activeTooltipId === `${loopIndex}-${item.id}`, '-wt': isActiveSlide(loopIndex, index) }">
-                                            <button class="o-tooltip__btn" :class="{ 'is-active': isActiveSlide(loopIndex, index) }" @click="activeTooltipId = activeTooltipId === `${loopIndex}-${item.id}` ? null : `${loopIndex}-${item.id}`"></button>
-                                            <div class="o-tooltip__content">
-                                                <div class="o-tooltip__item">一年方案贈 <span>1 支短影音</span></div>
-                                                <div class="o-tooltip__item">兩年方案加贈 <span>3 支短影音 & 網站永久使用權</span></div>
-                                                <div class="o-tooltip__item">三年方案再加贈
-                                                    <ul class="o-tooltip__list">
-                                                        <li><span>4 支短影音&行銷圖文企劃</span></li>
-                                                        <li><span>DM設計 6 篇 & 網站永久使用權 </span><br>(免維護費)</li>
-                                                    </ul>
-                                                </div>
+                                    <div class="c-plan__note" v-if="item.note" v-html="item.note"></div>
+                                </div>
+                                <ul class="c-plan__list">
+                                    <li v-for="feature in item.list" :key="feature" class="c-plan__item" v-html="feature"></li>
+                                </ul>
+                                <div class="c-plan__action" :class="{ '-notice': item.popup }">
+                                    <button v-if="item.popup" class="c-plan__notice" @click="openNotice(item.condition)">注意事項</button>
+                                    <a href="https://lin.ee/S2yG6zF" class="o-btn" :class="{ '-dark': isActiveSlide(index) }" target="_blank">立即諮詢</a>
+                                    <div class="o-tooltip" v-if="item.tooltip" :class="{ 'is-active': activeTooltipId === item.id, '-wt': isActiveSlide(index) }">
+                                        <button class="o-tooltip__btn" :class="{ 'is-active': isActiveSlide(index) }" @click="activeTooltipId = activeTooltipId === item.id ? null : item.id"></button>
+                                        <div class="o-tooltip__content">
+                                            <div class="o-tooltip__item">一年方案贈 <span>1 支短影音</span></div>
+                                            <div class="o-tooltip__item">兩年方案加贈 <span>3 支短影音 & 網站永久使用權</span></div>
+                                            <div class="o-tooltip__item">三年方案再加贈
+                                                <ul class="o-tooltip__list">
+                                                    <li><span>4 支短影音&行銷圖文企劃</span></li>
+                                                    <li><span>DM設計 6 篇 & 網站永久使用權 </span><br>(免維護費)</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </template>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,7 +233,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, watch, onMounted, onUnmounted } from 'vue';
 import { Swiper } from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import { Pagination, Navigation } from 'swiper/modules';
@@ -429,15 +427,20 @@ const plan = [
     }
 ]
 
-const activePlan = computed(() => plan[activePlanIndex.value % plan.length]!);
+const activePlan = computed(() => plan[activePlanIndex.value]!);
 
 const getPlanPrice = (item: (typeof plan)[number]): { year: string; twoYears: string; threeYears: string } => {
     return item.id === 'E' && !isEPlanCollaborating.value ? item.nocollab! : item.price;
 };
 
-const isActiveSlide = (loopIndex: number, planIndex: number) => {
-    return (loopIndex - 1) * plan.length + planIndex === activePlanIndex.value;
+const isActiveSlide = (planIndex: number) => {
+    return planIndex === activePlanIndex.value;
 };
+
+watch(activePlanIndex, (index) => {
+    const item = plan[index]!;
+    activeTooltipId.value = item.tooltip ? item.id : null;
+}, { immediate: true });
 
 onMounted(() => {
     planSwiper();
@@ -449,33 +452,22 @@ onUnmounted(() => {
     noticeDialog.value?.removeEventListener('close', handleNoticeClose);
 });
 
-const swiper = ref<Swiper | null>(null);
-
-const goPlan = (event: MouseEvent) => {
-    const slide = (event.currentTarget as HTMLElement).closest<HTMLElement>('.swiper-slide');
-    const index = swiper.value?.slides.indexOf(slide!);
-
-    if (index !== undefined && index >= 0) {
-        swiper.value?.slideTo(index);
-    }
-};
-
 const planSwiper = () => {
-    swiper.value = new Swiper('[data-swiper=plan]', {
+    new Swiper('[data-swiper=plan]', {
         modules: [Autoplay, Pagination, Navigation],
         slidesPerView: 'auto',
         spaceBetween: 32,
         breakpoints: {
             0: {
-                slidesPerView: 1.1,
+                slidesPerView: 1.2,
                 spaceBetween: 16
             },
             768: {
                 slidesPerView: 'auto'
             }
         },
-        loop: true,
-        loopAdditionalSlides: 3,
+        loop: false,
+        centeredSlides: true,
         autoplay: false,
         navigation: {
             prevEl: '[data-swiper-prev="plan"]',
@@ -483,15 +475,14 @@ const planSwiper = () => {
         },
         on: {
             slideChange(activeSwiper) {
-                activeTooltipId.value = null;
-                activePlanIndex.value = activeSwiper.realIndex;
+                activePlanIndex.value = activeSwiper.activeIndex;
             }
         }
     });
 };
 
 const customSwiper = () => {
-    swiper.value = new Swiper('[data-swiper=custom]', {
+    new Swiper('[data-swiper=custom]', {
         slidesPerView: 'auto',
         spaceBetween: 40,
         loop: true,

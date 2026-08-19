@@ -14,28 +14,30 @@
                     </div>
                 </div>
             </div>
-            <div class="l-footer__center">
-                <div class="o-footer">
-                    <div class="o-footer__title">聯絡我們</div>
-                    <div class="o-footer__content">
-                        <a class="o-footer__item" href="mailto:txweimin@gmail.com">txweimin@gmail.com</a>
+            <div class="l-footer__right">
+                <div class="l-footer__mail">
+                    <div class="o-footer">
+                        <div class="o-footer__title">聯絡我們</div>
+                        <div class="o-footer__content">
+                            <a class="o-footer__item" href="mailto:txweimin@gmail.com">txweimin@gmail.com</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="l-footer__right">
-                <div class="o-social">
-                    <a href="https://lin.ee/S2yG6zF" class="o-social__item" target="_blank" rel="noopener noreferrer">
-                        <span class="o-social__icon -line"></span>
-                        <div class="o-social__text">line</div>
-                    </a>
-                    <a href="https://www.instagram.com/wei.min888" class="o-social__item" target="_blank" rel="noopener noreferrer">
-                        <span class="o-social__icon -ig"></span>
-                        <div class="o-social__text">instagram</div>
-                    </a>
-                    <a href="mailto:txweimin@gmail.com" class="o-social__item" target="_self" rel="noopener noreferrer">
-                        <span class="o-social__icon -mail"></span>
-                        <div class="o-social__text">mail</div>
-                    </a>
+                <div class="l-footer__social">
+                    <div class="o-social">
+                        <a href="https://lin.ee/S2yG6zF" class="o-social__item" target="_blank" rel="noopener noreferrer">
+                            <span class="o-social__icon -line"></span>
+                            <div class="o-social__text">line</div>
+                        </a>
+                        <a href="https://www.instagram.com/wei.min888" class="o-social__item" target="_blank" rel="noopener noreferrer">
+                            <span class="o-social__icon -ig"></span>
+                            <div class="o-social__text">instagram</div>
+                        </a>
+                        <a href="mailto:txweimin@gmail.com" class="o-social__item" target="_self" rel="noopener noreferrer">
+                            <span class="o-social__icon -mail"></span>
+                            <div class="o-social__text">mail</div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="l-footer__copyright">

@@ -78,7 +78,7 @@ function isMB(index: number) {
         window.clearTimeout(scrollTimer)
 
         if (id === clickId && !isOpen(index)) {
-            openCards.value = [...openCards.value, index]
+            openCards.value = [index]
         }
     }
 

@@ -138,30 +138,29 @@ body {
       display: flex;
       flex-direction: column-reverse;
       justify-content: center;
-      gap: 60px;
       visibility: hidden;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100dvh;
-      border: 2px solid #f0cc7e;
+      right: 0;
+      width: 300px;
+      height: fit-content;
+      border: 2px solid rgba($color: #f0cc7e, $alpha: 1);
       border-radius: 12px;
       background: rgba($color: #000, $alpha: 0.95);
       -webkit-clip-path: circle(0 at 100% 0);
       clip-path: circle(0 at 100% 0);
       opacity: 0;
 
-      &::before {
-        content: "";
-        position: relative;
-        width: 120px;
-        height: 120px;
-        background: url(/images/logo/sub-logo.svg) no-repeat center / contain;
-        pointer-events: none;
-        transform: translateY(20px);
-        transition: 0.6s;
-        z-index: -1;
-      }
+      // &::before {
+      //   content: "";
+      //   position: relative;
+      //   width: 120px;
+      //   height: 120px;
+      //   background: url(/images/logo/sub-logo.svg) no-repeat center / contain;
+      //   pointer-events: none;
+      //   transform: translateY(20px);
+      //   transition: 0.6s;
+      //   z-index: -1;
+      // }
 
       transition:
         clip-path 0.6s ease-in-out,
@@ -238,9 +237,10 @@ body {
   @include medias.breakpoint-down("sm") {
     justify-content: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     width: 100%;
     padding-top: 60px;
+    padding-bottom: 60px;
     transform: translateY(20px);
     transition: 0.6s ease-in-out;
 
@@ -294,9 +294,15 @@ body {
     opacity: 0.4;
   }
 
+  &__right {
+    display: flex;
+    gap: 80px;
+  }
+
   @include medias.breakpoint-down("md") {
     &__wrap {
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 40px;
       padding-bottom: 140px;
       background: url(/images/background/footer.png) no-repeat bottom
@@ -304,15 +310,13 @@ body {
       font-size: 14px;
     }
 
-    &__left {
-      width: 100%;
-      order: 3;
+    &__right {
+      flex-direction: column;
+      gap: 20px;
     }
 
-    &__center,
-    &__right {
-      display: flex;
-      align-items: end;
+    &__social {
+      margin-left: -8px;
     }
 
     &__copyright {
@@ -465,14 +469,14 @@ body {
 
     &__content {
       &.-more {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4px;
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
 
         @at-root & #{$root} {
           &__item {
-            padding: 6px 12px;
-            border: 1px solid rgba($color: #fff, $alpha: 0.15);
+            justify-content: start;
+            width: 100%;
           }
         }
       }

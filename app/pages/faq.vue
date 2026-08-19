@@ -104,15 +104,15 @@
                 </div>
                 <div class="l-contact__content">
                     <div class="l-contact__form">
-                        <div class="c-form">
+                        <form class="c-form" @submit.prevent="submit">
                             <div class="c-form__wrap">
                                 <div class="c-form__item">
                                     <div class="c-form__title">姓名/品牌名稱 name</div>
-                                    <input v-model="form.name" type="text" class="c-form__content" placeholder="請輸入姓名或品牌名稱">
+                                    <input v-model="form.name" type="text" required class="c-form__content" placeholder="請輸入姓名或品牌名稱">
                                 </div>
                                 <div class="c-form__item">
                                     <div class="c-form__title">聯絡電話 phone</div>
-                                    <input v-model="form.phone" type="text" class="c-form__content" placeholder="請輸入聯絡電話">
+                                    <input v-model="form.phone" type="text" required class="c-form__content" placeholder="請輸入聯絡電話">
                                 </div>
                                 <div class="c-form__item">
                                     <div class="c-form__title">聯絡時段 contact time</div>
@@ -128,14 +128,14 @@
                                 </div>
                                 <div class="c-form__item -lg">
                                     <div class="c-form__title">讓我們更了解您 get to know you</div>
-                                    <input v-model="form.message" type="text" class="c-form__content" placeholder="請輸入您的想要及需要">
+                                    <input v-model="form.message" type="text" class="c-form__content" required placeholder="請輸入您的想要及需要">
                                 </div>
                             </div>
                             <div class="c-form__action">
-                                <button class="o-btn" @click="submit()">開啟專屬規劃</button>
+                                <button class="o-btn" type="submit" :disabled="isSubmitting">{{ isSubmitting ? '傳送中...' : '開啟專屬規劃' }}</button>
                                 <span>填寫後，我們將在 24 小時內與您聯繫。 </span>
                             </div>
-                        </div>
+                        </form>
                         <div class="o-star -lg"></div>
                     </div>
                     <div class="l-contact__footer">讓專業各司其職，你的品牌才能美美地上線、穩穩地成交。</div>
@@ -160,29 +160,44 @@ const form = ref({
     message: ''
 });
 
-const submit = () => {
-    const subject = `【 FAQ 諮詢 】${form.value.name || '未填寫姓名'}`;
-    const body = [
-        `姓名/品牌名稱：${form.value.name}`,
-        `聯絡電話：${form.value.phone}`,
-        `聯絡時段：${form.value.contactTime}`,
-        `諮詢項目：${form.value.service}`,
-        `信箱：${form.value.email}`,
-        `備註：${form.value.message}`
-    ].join('\n');
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_yX5Vz5lOSLi8pRsaNBjgHn_gGWC6YtbGQjT3vP-iAMjZJxqGi8cjyOSdHx8j1nLy3w/exec';
 
-    const mailtoUrl = `mailto:vivi930038@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
+const isSubmitting = ref(false);
+const submitStatus = ref<'idle' | 'success' | 'error'>('idle');
+
+const submit = async () => {
+    if (isSubmitting.value) return;
+
+    isSubmitting.value = true;
+    submitStatus.value = 'idle';
+
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(form.value)
+        });
+        submitStatus.value = 'success';
+        form.value = { name: '', phone: '', contactTime: '', service: '', email: '', message: '' };
+        alert('感謝您的填寫，我們將在 24 小時內與您聯繫！');
+    } catch {
+        submitStatus.value = 'error';
+    } finally {
+        isSubmitting.value = false;
+    }
 };
 
 const toggleCollab = (index: number) => {
-    collabOpen.value[index] = !collabOpen.value[index];
+    const isOpen = collabOpen.value[index];
+    collabOpen.value = collab.map((_, itemIndex) => itemIndex === index && !isOpen);
 };
 
 const toggleService = (serviceId: string, index: number) => {
     const items = serviceOpen.value[serviceId] ?? [];
-    items[index] = !items[index];
-    serviceOpen.value[serviceId] = items;
+    const isOpen = items[index];
+    const targetService = service.find((item) => item.id === serviceId)!;
+    serviceOpen.value[serviceId] = targetService.list.map((_, itemIndex) => itemIndex === index && !isOpen);
 };
 
 const collab = [

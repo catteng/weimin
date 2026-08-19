@@ -25,6 +25,10 @@
     gap: 12px;
   }
 
+  &.-left {
+    justify-content: flex-start;
+  }
+
   @include medias.breakpoint-down("sm") {
     justify-content: center;
     gap: 20px;
@@ -33,6 +37,12 @@
     &::before {
       width: 24px;
     }
+
+    // &.-left-sm {
+    //   width: fit-content;
+    //   margin-right: auto;
+    //   margin-left: 0;
+    // }
   }
 }
 
@@ -633,9 +643,19 @@
     margin-top: 40px;
   }
 
+  &__title {
+    display: flex;
+    width: 100%;
+  }
+
   @include medias.breakpoint-down("md") {
     &__wrap {
       padding: 60px 20px 60px 20px;
+    }
+
+    &__title {
+      display: flex;
+      width: 100%;
     }
   }
 }
@@ -1067,7 +1087,7 @@
     align-items: center;
     gap: 12px;
     padding-bottom: 8px;
-    pointer-events: none;
+    cursor: pointer;
   }
 
   &__text {
@@ -1117,7 +1137,7 @@
 
       @at-root & ~ #{$root} {
         &__text {
-          color: #000;
+          color: #fff;
         }
       }
     }
@@ -2269,28 +2289,26 @@
     }
   }
 
-  &.-mb {
-    display: none;
-    flex-direction: column;
-    padding: 0;
-    background:
-      url(/images/background/blur.svg) no-repeat left calc(50% - 120px)
-        top -80px / 800px,
-      url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
-        450px / 460px,
-      url(/images/background/wave-circle-op3.svg) no-repeat left
-        calc(50% + 100px) top 10px / 1200px;
-  }
+  // &.-mb {
+  //   display: none;
+  //   flex-direction: column;
+  //   padding: 0;
+  //   background:
+  //     url(/images/background/blur.svg) no-repeat left calc(50% - 120px)
+  //       top -80px / 800px,
+  //     url(/images/background/blur.svg) no-repeat left calc(50% + 200px) top
+  //       450px / 460px,
+  //     url(/images/background/wave-circle-op3.svg) no-repeat left
+  //       calc(50% + 100px) top 10px / 1200px;
+  // }
 
   @include medias.breakpoint-down("md") {
-    &__head {
-      .c-title {
-        font-size: 22px !important;
-      }
-    }
+    background: url(/images/background/blur-yl.svg) no-repeat bottom -100px
+      right calc(50% - 200px) / 600px 600px;
 
     &__wrap {
       height: 360px;
+      padding: 0;
     }
 
     &__head {
@@ -2298,30 +2316,62 @@
       height: 100%;
       background: url(/images/section/about/about.png) no-repeat right/180px
         360px;
+
+      .c-title {
+        font-size: 22px !important;
+      }
     }
   }
 
   @include medias.breakpoint-down("sm") {
+    height: 800px;
+
+    &__head {
+      width: 360px;
+      height: 200px;
+      padding-top: 0;
+      background: url(/images/section/about/about-sm.png) no-repeat right/360px
+        180px;
+    }
+
     &__wrap {
-      display: flex;
       flex-direction: column;
+      align-items: center;
       height: auto;
     }
 
-    &__head {
-      width: 280px;
-      height: 100%;
-      background: none;
-    }
+    &__content {
+      width: 100%;
+      height: auto;
+      flex: 0;
 
-    &.-pc {
-      display: none;
-    }
-
-    &.-mb {
-      display: flex;
+      &::before,
+      &::after {
+        display: none;
+      }
     }
   }
+  // @include medias.breakpoint-down("sm") {
+  //   &__wrap {
+  //     display: flex;
+  //     flex-direction: column;
+  //     height: auto;
+  //   }
+
+  //   &__head {
+  //     width: 280px;
+  //     height: 100%;
+  //     background: none;
+  //   }
+
+  //   &.-pc {
+  //     display: none;
+  //   }
+
+  //   &.-mb {
+  //     display: flex;
+  //   }
+  // }
 }
 
 .o-brandCard {
@@ -2363,7 +2413,25 @@
   }
 
   @include medias.breakpoint-down("sm") {
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+    height: 100%;
+
+    &__num {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+
+      &::after {
+        margin-top: 0px;
+        transform: rotateZ(0deg);
+      }
+    }
+
+    &__content {
+      gap: 20px;
+    }
   }
 }
 

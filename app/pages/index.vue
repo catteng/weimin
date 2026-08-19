@@ -62,7 +62,7 @@
         <div class="l-block__item -feature" ref="featureEl">
             <div class="l-block__bg" :class="{ 'is-visible': isFeatureVisible }" :style="{ '--scroll-scale': scale, '--scroll-rotate': `${rotation}deg` }"></div>
             <div class="l-block__wrap">
-                <div class="c-title">三大亮點</div>
+                <div class="c-title -left">三大亮點</div>
                 <div class="c-feature">
                     <div class="c-feature__item" data-aos="fade-up" data-aos-delay="300">
                         <div class="c-feature__title">從策略、視覺到下單，<br>打造不漏接的「高轉換閉環」</div>
@@ -92,7 +92,7 @@
                 <video class="l-service__bg" src="/video/service.mp4" autoplay muted loop playsinline></video>
                 <div class="l-service__wrap">
                     <div class="l-service__title">
-                        <div class="c-title -v" data-aos="fade-up">服務項目</div>
+                        <div class="c-title -v -left-sm" data-aos="fade-up">服務項目</div>
                     </div>
                     <div class="l-service__content">
                         <ul class="c-serviceList" data-aos="fade-in">
@@ -360,14 +360,22 @@ const logoSwiper = () => {
     swiper.value = new Swiper('.c-logo', {
         modules: [Autoplay],
         slidesPerView: 'auto',
-        spaceBetween: 40,
         speed: 3000,
+        spaceBetween: 100,
+        allowTouchMove: false,
         loop: true,
         autoplay: {
             delay: 0,
             disableOnInteraction: false,
         },
-        allowTouchMove: false,
+        breakpoints: {
+            0: {
+                spaceBetween: 50
+            },
+            768: {
+                spaceBetween: 100,
+            }
+        },
     });
 };
 

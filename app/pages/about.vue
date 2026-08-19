@@ -47,7 +47,8 @@
 
         <div class="l-block__item -p0">
             <!-- about -->
-            <div class="l-about -pc">
+            <!-- <div class="l-about -pc"> -->
+            <div class="l-about">
                 <div class="l-about__wrap">
                     <div class="l-about__head" data-aos="fade-right">
                         <div class="c-title">{{ aboutTitles[activeAboutIndex] }}</div>
@@ -123,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="l-about -mb">
+            <!-- <div class="l-about -mb">
                 <div class="c-title">品牌背景</div>
                 <div class="c-feature">
                     <div class="c-feature__item" data-aos="fade-up" data-aos-delay="300">
@@ -158,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="l-block__item -blur">
@@ -221,13 +222,22 @@ const customSwiper = () => {
         centeredSlides: true,
         spaceBetween: 0,
         loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
+        // autoplay: {
+        //     delay: 3000,
+        //     disableOnInteraction: false,
+        // },
         on: {
             slideChange(instance) {
                 activeAboutIndex.value = instance.realIndex % aboutTitles.length;
+            },
+        },
+        breakpoints: {
+            0: {
+                direction: 'horizontal',
+                 slidesPerView: 1.2,
+            },
+            768: {
+                direction: 'vertical',
             },
         },
     });
